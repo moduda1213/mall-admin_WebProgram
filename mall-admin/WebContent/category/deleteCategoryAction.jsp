@@ -7,8 +7,10 @@
 	
 	int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 	System.out.println(categoryId);
+	
 	Category category = new Category();
 	category.CategoryId = categoryId;
+	
 	CategoryDao categoryDao = new CategoryDao();
 	categoryDao.deleteCategory(category);
 	

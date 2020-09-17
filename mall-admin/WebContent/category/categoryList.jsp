@@ -19,43 +19,21 @@
 	<div>
 		<a href="/mall-admin/category/addCategory.jsp">상품 카테고리 추가</a>
 	</div>
-	<%//테이블하나당 클래스 하나
-		int currentPage = 1;
+	
+	
+	<%
+		int currentPage = 1; //Page의 currentPage로 변경
 		if(request.getParameter("currentPage") != null){
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		//page => currentPage, beginRow, rowPerPage
-		//Page page = new Page();
-		int rowPerPage = 5;
-		int beginRow = (currentPage - 1)*rowPerPage;
-		
-		String driver = "org.mariadb.jdbc.Driver";
-		String dbaddr = "jdbc:mariadb://localhost:3306/mall";
-		String dbid = "root";
-		String dbpw = "java1004";
-		String sql = "select count(*) from category";
-		Class.forName(driver);
-		Connection conn = DriverManager.getConnection(dbaddr,dbid,dbpw);
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		ResultSet rs = stmt.executeQuery();
-		conn.close();
-		
-		int totalList = 0;
-		int lastPage = 0;
-		
-		if(rs.next()) {
-			totalList=rs.getInt("count(*)");
-		}
-		if(totalList % rowPerPage != 0){
-			lastPage = (totalList / rowPerPage)+1; 
-		}else{
-			lastPage = (totalList / rowPerPage); 
-		}
 		
 		CategoryDao categoryDao = new CategoryDao();
-		
 		//page에서 뽑은 beginRow, rowPerPage를 넣는다
-		ArrayList<Category> list = categoryDao.selectCategoryList(beginRow,rowPerPage); // 리스트 목록 불러오는 메서드
+		Page p = categoryDao.createPage(currentPage);
+		
+		
+		ArrayList<Category> list = categoryDao.intSelectCategoryList(p.beginRow,p.rowPerPage); // 리스트 목록 불러오는 메서드
+		
 	%>
 	<table border ="1">
 		<thead>
@@ -99,10 +77,10 @@
 			}
 		%>
 		<%
-			if(currentPage<lastPage){
+			if(currentPage<p.lastPage){
 		%>
 			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage+1%>">다음</a></td>
-			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=<%=lastPage%>">마지막으로</a></td>
+			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></td>
 		<%
 			}
 		%>
