@@ -6,9 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div class ="container">
+
 	<div><!-- 메뉴 -->
 		<jsp:include page ="/inc/menu.jsp"></jsp:include>
 	</div>
@@ -36,30 +39,34 @@
 	
 	<h1>상품 목록</h1>
 	
-	<div>
-		<a href="/mall-admin/product/productList.jsp?categoryId=-1">[전체보기]</a>
+	<ul class="list-group list-group-horizontal">
+		<li class="list-group-item btn btn-outline-warning">
+			<a href="/mall-admin/product/productList.jsp?categoryId=-1" class="text-dark">[전체보기]</a>
+		</li>
+		
 		<%
 			for(Category c : categoryList){
 		%>
-				<a href="/mall-admin/product/productList.jsp?categoryId=<%=c.CategoryId%>">
+			<li class="list-group-item btn btn-outline-warning">
+				<a href="/mall-admin/product/productList.jsp?categoryId=<%=c.CategoryId%>" class="text-dark">
 				[<%=c.CategoryName %>]</a>
+			</li>
 		<%
 			}
 		%>
-	</div>
+	</ul>
+		
+
 	
-	<div>
-		<a href= "/mall-admin/product/addProduct.jsp">상품 추가</a>
-	</div>
 	
-	<table border="1">
-		<thead>
+	
+	<table class="table table-bordered table-hover table-responsive-md">
+		<thead class="table-success">
 			<tr>
-				<th>product_id</th>
+				<th><a href="/mall-admin/product/productListOrderAction.jsp" class="text-dark">product_id</a></th>
 				<th>category_id</th>
 				<th>product_name</th>
 				<th>product_price</th>
-				<th>p.product_content<th>
 				<th>product_soldout</th>
 			</tr>
 		</thead>
@@ -69,36 +76,39 @@
 					if(p.productSoldout.equals("Y")){
 			%>
 					<tr>
-						<td><%=p.productId %></td>
+						<td>
+							<a href ="/mall-admin/product/productOne.jsp?productId=<%=p.productId%>" class="text-dark">
+								<%=p.productId %>
+							</a>
+						</td>
 						<td><%=p.categoryId %></td>
 						<td><%=p.productName %></td>
 						<td><%=p.productPrice %></td>
-						<td><%=p.productContent %><td>
 						<td>품절</td>
-						<td><a href="/mall-admin/product/updateProduct.jsp?productId=<%=p.productId%>&categoryId=<%=p.categoryId%>
-									&productName=<%=p.productName%>&productPrice=<%=p.productPrice%>&productSoldout=<%=p.productSoldout%>">수정</a></td>
-						<td><a href="/mall-admin/product/deleteProductAction.jsp?productId=<%=p.productId%>">삭제</a></td>
 					<tr>
 			<%
 					}else{
 			%>
 					<tr>
-						<td><%=p.productId %></td>
+						<td>
+							<a href ="/mall-admin/product/productOne.jsp?productId=<%=p.productId%>" class="text-dark">
+								<%=p.productId %>
+							</a>
+						</td>
 						<td><%=p.categoryId %></td>
 						<td><%=p.productName %></td>
 						<td><%=p.productPrice %></td>
-						<td><%=p.productContent %><td>
 						<td><%=p.productSoldout %></td>
-						<td><a href="/mall-admin/product/updateProduct.jsp?productId=<%=p.productId%>&categoryId=<%=p.categoryId%>
-									&productName=<%=p.productName%>&productPrice=<%=p.productPrice%>&productSoldout=<%=p.productSoldout%>">수정</a></td>
-						<td><a href="/mall-admin/product/deleteProductAction.jsp?productId=<%=p.productId%>">삭제</a></td>
 					<tr>
 			<%
 					}
 				}
 			%>
-			
 		</tbody>
 	</table>
+	<div>
+			<a class="nav-link btn btn-outline-info" href= "/mall-admin/product/addProduct.jsp">상품 추가</a>
+	</div>
+</div>
 </body>
 </html>

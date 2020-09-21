@@ -3,32 +3,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index</title>
+	<title>index</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<%
-		int log = 0; // 권한을 얻었는지 판단하기 위한 count
-		if(request.getParameter("log")!=null){
-			log = Integer.parseInt(request.getParameter("log"));
-		}
-		System.out.println(log);
-	%>
+
+<div class="container">
+
 	<div>
-		<jsp:include page ="/inc/menu.jsp?log=<%=log %>"></jsp:include>
+		<jsp:include page ="inc/menu.jsp"></jsp:include>
 	</div>
-	<h1>관리자 메인 페이지</h1>
+	
 	<div>
-	<%
-		if(log == 1){
-	%>
-		<a href="/mall-admin/index.jsp?log=0">log out</a>
-	<%
-		}else{
-	%>	
-		<a href="/mall-admin/login/login.jsp?">sign in</a>
-	<%
-		}
-	%>
+  		<h1>메인 페이지 <span class="badge badge-secondary">관리자</span></h1>
 	</div>
+	
+	<div>&nbsp;</div>
+	<div>&nbsp;</div>
+	
+	<div>
+		<img src="/mall-admin/image/tool.png" class="rounded-circle" alt="Cinque Terre" style="width:500px;">
+	</div>
+</div>
 </body>
 </html>

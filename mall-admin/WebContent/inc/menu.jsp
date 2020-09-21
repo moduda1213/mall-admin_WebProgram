@@ -1,40 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("utf-8");
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-	int log = 0;
-	if(request.getParameter("log")!=null){
-		log = Integer.parseInt(request.getParameter("log"));
-	}
-	//System.out.println(log);
-	
-	if(log == 0){//비로그인일 때
-%>
-		<ul>
+	<nav class="navbar navbar-expand-sm bg-black navbar-light ">
+		<ul class="navbar-nav">
 			<li>
-				<a href="/mall-admin/index.jsp">[홈으로]</a>
+				<a class="navbar-brand" href="/mall-admin/index.jsp">
+				   <img src="/mall-admin/image/home.jpeg" alt="Logo" style="width:40px;">
+				</a>
 			</li>
-			<li>
-				<a href="/mall-admin/login/login.jsp">[상품카테고리 관리]</a>
+			<li class="nav-item active">
+				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/category/categoryList.jsp">[상품카테고리 관리]</a>
 			</li>
-			<li>
-				<a href="/mall-admin/login/login.jsp">[상품 관리]</a>
+			<li class="nav-item active">	
+				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/product/productList.jsp">[상품 관리]</a>
 			</li>
+			<li class="nav-item active">
+				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/login/login.jsp">[로그인]</a>
+			</li>
+			
 		</ul>
-<%
-	}else{//로그인일 떄
-%>
-		<ul>
-			<li>
-				<a href="/mall-admin/index.jsp">[홈으로]</a>
-			</li>
-			<li>
-				<a href="/mall-admin/category/categoryList.jsp">[상품카테고리 관리]</a>
-			</li>
-			<li>
-				<a href="/mall-admin/product/productList.jsp">[상품 관리]</a>
-			</li>
-		</ul>
-<%
-	}
-%>
+	</nav>

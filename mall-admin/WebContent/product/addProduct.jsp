@@ -7,9 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>addProduct</title>
+	<title>addProduct</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
 	<div>
 		<jsp:include page ="/inc/menu.jsp"></jsp:include>
 	</div>
@@ -22,7 +24,7 @@
 	
 	<h1>상품 추가</h1>
 	<form method ="post" action="/mall-admin/product/addProductAction.jsp">
-		<table border="1">
+		<table class="table table-bordered">
 			<tr>
 				<td>category_id</td>
 				<td>
@@ -64,8 +66,8 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit">추가하기</button>
+		<button type="submit" class="btn btn-primary">추가하기</button>
 	</form>
-	<a href= "/mall-admin/product/productList.jsp">뒤로가기</a>
+</div>
 </body>
 </html>

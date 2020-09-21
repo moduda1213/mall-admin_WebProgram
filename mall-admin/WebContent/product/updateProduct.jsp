@@ -6,9 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
+
 	<div>
 		<jsp:include page ="/inc/menu.jsp"></jsp:include>
 	</div>
@@ -37,14 +40,14 @@
 	%>
 	<!-- 테이블 만들기 -->
 	<form method = "post" action ="/mall-admin/product/updateProductAction.jsp">
-		<table border="1">
+		<table class="table table-bordered table-responsive-md">
 			<tr>
 				<td>product_id</td> <!-- 변경 x -->
 				<td><input type ="text" name ="productId" value="<%=productId %>" readonly="readonly"></td>
 			<tr>
 			<tr>
-				<td>category_id</td>
-				<td>
+				<td class="table-secondary">category_id</td>
+				<td class="table-secondary">
 					<select name = "categoryId">
 						
 						<%
@@ -69,16 +72,16 @@
 				<td><input type= "text" name = "productName" value=<%=productName %>></td>
 			<tr>
 			<tr>
-				<td>product_price</td>
-				<td><input type= "text" name = "productPrice" value=<%=productPrice %>></td>
+				<td class="table-secondary">product_price</td>
+				<td class="table-secondary"><input type= "text" name = "productPrice" value=<%=productPrice %>></td>
 			<tr>
 			<tr>
 				<td>product_content</td>
 				<td><textarea rows="5" cols="80" name ="productContent"></textarea></td>
 			<tr>
 			<tr>
-				<td>product_soldout</td>
-				<td>
+				<td class="table-secondary">product_soldout</td>
+				<td class="table-secondary">
 					<%
 						if(productSoldout.equals("N")){
 					%>
@@ -95,8 +98,8 @@
 				</td>
 			<tr>
 		</table>
-		<button type="submit">수정하기</button>
+		<button type="submit" class="btn btn-primary">수정하기</button>
 	</form>
-	<a href= "/mall-admin/product/productList.jsp">뒤로가기</a>
+</div>
 </body>
 </html>

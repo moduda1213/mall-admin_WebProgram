@@ -8,19 +8,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
 	<div>
 		<jsp:include page ="/inc/menu.jsp"></jsp:include>
 	</div>
 	
 	<h1>categoryList</h1>
+	
+	<div>&nbsp;</div>
+	
 	<div>
-		<a href="/mall-admin/category/addCategory.jsp">상품 카테고리 추가</a>
+		<a class="btn btn-dark text-light" href="/mall-admin/category/addCategory.jsp">상품 카테고리 추가</a>
 	</div>
 	
-	
+	<div>&nbsp;</div>
 	<%
 		int currentPage = 1; //Page의 currentPage로 변경
 		if(request.getParameter("currentPage") != null){
@@ -35,11 +40,11 @@
 		ArrayList<Category> list = categoryDao.intSelectCategoryList(p.beginRow,p.rowPerPage); // 리스트 목록 불러오는 메서드
 		
 	%>
-	<table border ="1">
+	<table class="table table-bordered table-responsive-sm table-striped">
 		<thead>
 			<tr>
-				<th>category_no</th>
-				<th>category_name</th>
+				<th class="table-secondary">category_no</th>
+				<th class="table-secondary">category_name</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,10 +52,10 @@
 				for(Category c : list){
 			%>
 					<tr>
-						<td><%=c.CategoryId %></td>
-						<td><%=c.CategoryName %></td>
-						<td><a href="/mall-admin/category/updateCategory.jsp?categoryId=<%=c.CategoryId%>&categoryName=<%=c.CategoryName%>">수정</a></td>
-						<td><a href="/mall-admin/category/deleteCategoryAction.jsp?categoryId=<%=c.CategoryId%>">삭제</a></td>
+						<td style="height:10px; width:10px;"><%=c.CategoryId %></td>
+						<td style="height:10px; width:10px;"><%=c.CategoryName %></td>
+						<td style="height:10px; width:5px;" class="table-info"><a href="/mall-admin/category/updateCategory.jsp?categoryId=<%=c.CategoryId%>&categoryName=<%=c.CategoryName%>">수정</a></td>
+						<td style="height:10px; width:5px;" class="table-danger"><a href="/mall-admin/category/deleteCategoryAction.jsp?categoryId=<%=c.CategoryId%>">삭제</a></td>
 					</tr>
 			<%
 				}
@@ -66,25 +71,29 @@
 		count(*)%rowPerPage != 0 일 땐 lastPage = count(*) / rowPerPage -1     **if문;;
 				//			== 0 일 땐 lastPage = count(*) / rowPerPage
 	 -->
-	<table border ="1">
-		<tr>
+
+	<ul class="pagination">
 		<%
 			if(currentPage>1){
 		%>
-			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=1">처음으로</a></td> 
-			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage-1%>">이전</a></td>
+			  <li class="page-item"><a class="page-link" href ="/mall-admin/category/categoryList.jsp?currentPage=1">처음으로</a></li>
+			  <li class="page-item"><a class="page-link" href = "/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+			  <li class="page-item disabled"><a class="page-link" href="/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+			  <li class="page-item disabled"><a class="page-link" href="/mall-admin/category/categoryList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></li>
 		<%
 			}
 		%>
-		<%
+	 	<%
 			if(currentPage<p.lastPage){
 		%>
-			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage+1%>">다음</a></td>
-			<td><a href = "/mall-admin/category/categoryList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></td>
+			  <li class="page-item disabled"><a class="page-link" href ="/mall-admin/category/categoryList.jsp?currentPage=1">처음으로</a></li>
+			  <li class="page-item disabled"><a class="page-link" href = "/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+			  <li class="page-item"><a class="page-link" href="/mall-admin/category/categoryList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+			  <li class="page-item"><a class="page-link" href="/mall-admin/category/categoryList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></li>
 		<%
 			}
 		%>
-		<tr>
-	</table>
+	</ul>
+</div>
 </body>
 </html>
