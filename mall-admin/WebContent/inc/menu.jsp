@@ -17,6 +17,8 @@
 			<li class="nav-item active">
 				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/login/login.jsp">[로그인]</a>
 			</li>
-			
+			<li class="nav-item active">
+				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/orders/ordersList.jsp">[주문 목록]</a>
+			</li>
 		</ul>
 	</nav>
