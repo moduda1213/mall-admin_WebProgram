@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	if(session.getAttribute("loginAdminId")==null){
+		response.sendRedirect("/mall-admin/login/login.jsp");
+	}
+%>
+<%
 	/*
 		이미 product id 로 정렬 되어 있으니까
 		

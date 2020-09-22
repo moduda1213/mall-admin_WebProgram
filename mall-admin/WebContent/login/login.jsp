@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	if(session.getAttribute("loginAdminId") !=null){
+		System.out.println("이미 로그인이 되어있는 상태입니다.");
+		response.sendRedirect("/mall-admin/index.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>

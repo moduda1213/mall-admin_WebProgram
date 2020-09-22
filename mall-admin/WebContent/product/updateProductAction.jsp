@@ -3,7 +3,11 @@
 <%@ page import = "dao.*" %>
 <%@ page import = "java.util.*" %>
 <%@ page import = "java.sql.*" %>
-
+<%
+	if(session.getAttribute("loginAdminId")==null){
+		response.sendRedirect("/mall-admin/login/login.jsp");
+	}
+%>
 <%
 	request.setCharacterEncoding("utf-8");
 	

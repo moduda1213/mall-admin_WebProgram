@@ -193,6 +193,7 @@ public class ProductDao {
 			product.productPrice = rs.getInt("product_price");
 			product.productContent = rs.getString("product_content");
 			product.productSoldout = rs.getString("product_soldout");
+			product.productPic = rs.getNString("product_pic");
 		}
 		
 		return product;

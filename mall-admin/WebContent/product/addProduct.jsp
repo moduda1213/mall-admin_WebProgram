@@ -3,6 +3,11 @@
 <%@ page import="dao.*" %>
 <%@ page import ="java.util.*" %>
 <%@ page import ="java.sql.*" %>
+<%
+	if(session.getAttribute("loginAdminId")==null){
+		response.sendRedirect("/mall-admin/login/login.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>

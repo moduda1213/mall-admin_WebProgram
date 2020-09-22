@@ -2,6 +2,11 @@
 <%@ page import= "java.util.ArrayList" %>
 <%@ page import = "vo.*" %>
 <%@ page import = "dao.*" %>
+<%
+	if(session.getAttribute("loginAdminId") == null){
+		response.sendRedirect("/mall-admin/login/login.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>

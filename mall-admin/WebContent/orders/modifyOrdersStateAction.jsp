@@ -9,12 +9,17 @@
 
  	int ordersId = Integer.parseInt(request.getParameter("ordersId"));
  	String ordersState = request.getParameter("ordersState");
+ 	System.out.println(ordersId + ordersState);
+ 	
  	OrdersAndProduct oap = new OrdersAndProduct();
  	OrdersDao ordersDao = new OrdersDao();
  	
+ 	
  	oap = ordersDao.selectOrdersOne(ordersId);
  	oap.orders.ordersState = ordersState;
+ 	
  	ordersDao.updateOrdersState(oap);
+ 	System.out.println(ordersId + ordersState);
  	
 	response.sendRedirect("/mall-admin/orders/ordersList.jsp");
 %>

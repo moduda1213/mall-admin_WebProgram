@@ -7,4 +7,5 @@ public class Product {
 	public int productPrice;
 	public String productContent;
 	public String productSoldout;
+	public String productPic;
 }

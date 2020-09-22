@@ -26,15 +26,14 @@
 		
 		ArrayList<String> stateList = null; // 주문 상태를 불러오기 위한 변수
 		stateList = ordersDao.selectOrdersStateList();
-		
-		String state = null;
+		String a = null;
 	%>
 <div class ="container">
 	<div><!-- 메뉴 -->
 		<jsp:include page ="/inc/menu.jsp"></jsp:include>
 	</div>
 	<h1>주문 상태 변경</h1>
-	<form method = "post" action = "/mall-admin/orders/modifyOrdersStateAction.jsp">
+	<form method = "post" action = "/mall-admin/orders/modifyOrdersStateAction.jsp?ordersId=<%=oap.orders.ordersId%>">
 		<table class = "table">
 			<thead>
 				<tr>
@@ -60,15 +59,13 @@
 					<td><%=oap.orders.memberEmail %></td>
 					<td><%=oap.orders.ordersAddr %></td>
 					<td>
-						<select>
+						<select name = "ordersState">
 							<%
 								for(String s : stateList){
 									if(s.equals(oap.orders.ordersState)){
 							%>
 									<option selected="selected"><%=s %></option>
-									
 							<%
-									state = s;
 									}else{
 							%>
 									<option><%=s %></option>
@@ -79,8 +76,7 @@
 						</select>
 					</td>
 					<td><%=oap.orders.ordersDate %></td>
-					<% System.out.println(oap.orders.ordersState); %>
-					<td><a href="/mall-admin/orders/modifyOrdersStateAction.jsp?ordersId=<%=oap.orders.ordersId%>&ordersState=<%=state%>">수정</a></td>
+					<td><button class="nav-link btn btn-outline-info" type = "submit">수정</button>
 				</tr>
 			</tbody>
 	</table>
