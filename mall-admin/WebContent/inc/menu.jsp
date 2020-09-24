@@ -15,7 +15,13 @@
 				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/product/productList.jsp">[상품 관리]</a>
 			</li>
 			<li class="nav-item active">
-				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/orders/ordersList.jsp">[주문 목록]</a>
+				<a class ="nav-link btn btn-outline-secondary" href="<%=request.getContextPath() %>/orders/ordersList.jsp">[주문 목록]</a>
+			</li>
+			<li class="nav-item active">
+				<a class ="nav-link btn btn-outline-secondary" href="<%=request.getContextPath() %>/notice/noticeList.jsp">[공지관리]</a>
+			</li>
+			<li class="nav-item active">
+				<a class ="nav-link btn btn-outline-secondary" href="<%=request.getContextPath() %>/orders/noticeList.jsp">[회원관리]</a>
 			</li>
 			<li class="nav-item active">
 				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/login/logoutAction.jsp">[LogOut]</a>

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class AdminDao {
 	public Admin login(Admin admin) throws Exception {
-		Admin returnAdmin = null;
+		Admin returnAdmin = null;//아이디 비번 일치하는지 판단 -> 로그인 실패 : null / 로그인 성공 : 입력한 데이터
 		
 		String driver ="org.mariadb.jdbc.Driver";
 		String dbaddr ="jdbc:mariadb://localhost:3306/mall";

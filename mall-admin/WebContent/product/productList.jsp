@@ -3,9 +3,11 @@
 <%@ page import = "vo.*" %>
 <%@ page import = "dao.*" %>
 <%
+	
 	if(session.getAttribute("loginAdminId") == null){
 		response.sendRedirect("/mall-admin/login/login.jsp");
 	}
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -121,17 +123,14 @@
 	<div>
 		<ul class="pagination"> <!-- 페이징 -->
 			<%
-				if(currentPage >1){
+				if(currentPage > 1){
 			%>
 					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=1">처음으로</a></li>
 					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=paging.lastPage%>">마지막으로</a></li>
 			<%
-				}
-			%>
-			<%
-				if(currentPage < paging.lastPage){
+				}else if(currentPage < paging.lastPage){
 			%>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=1">처음으로</a></li>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
@@ -140,6 +139,7 @@
 			<%
 				}
 			%>
+			
 		</ul>
 	</div>
 	
