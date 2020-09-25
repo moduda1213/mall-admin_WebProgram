@@ -21,7 +21,7 @@
 				<a class ="nav-link btn btn-outline-secondary" href="<%=request.getContextPath() %>/notice/noticeList.jsp">[공지관리]</a>
 			</li>
 			<li class="nav-item active">
-				<a class ="nav-link btn btn-outline-secondary" href="<%=request.getContextPath() %>/orders/noticeList.jsp">[회원관리]</a>
+				<a class ="nav-link btn btn-outline-secondary" href="<%=request.getContextPath() %>/users/usersList.jsp">[회원관리]</a>
 			</li>
 			<li class="nav-item active">
 				<a class ="nav-link btn btn-outline-secondary" href="/mall-admin/login/logoutAction.jsp">[LogOut]</a>

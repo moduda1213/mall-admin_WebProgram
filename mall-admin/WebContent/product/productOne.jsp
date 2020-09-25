@@ -33,48 +33,48 @@
 	<table class="table table-bordered table-hover table-responsive-sm">
 		<tr>
 			<td>product_pic</td>
-			<td><img src="/mall-admin/image/<%=product.productPic %>"></td>
+			<td><img src="/mall-admin/image/<%=product.getProductPic() %>"></td>
 		</tr>
 		<tr>
 			<td>product_id</td>
-			<td><%=product.productId %></td>
+			<td><%=product.getProductId() %></td>
 		</tr>
 		<tr>
 			<td>category_id</td>
-			<td><%=product.categoryId%> </td>
+			<td><%=product.getCategoryId()%> </td>
 		</tr>
 		<tr>
 			<td>product_name</td>
-			<td><%=product.productName%></td>
+			<td><%=product.getProductName() %></td>
 		</tr>
 		<tr>
 			<td>product_price</td>
-			<td><%=product.productPrice%></td>
+			<td><%=product.getProductPrice() %></td>
 		</tr>
 		<tr>
 			<td>product_content</td>
-			<td><%=product.productContent%></td>
+			<td><%=product.getProductContent() %></td>
 		</tr>
 		<tr>
 			<td>produc_soldout</td>
 			<td>
 				<%
-					if(product.productSoldout.equals("Y")){
+					if(product.getProductSoldout().equals("Y")){
 				%>
-						<a href="/mall-admin/product/modifyProductSoldoutAction.jsp?productId=<%=product.productId%>&productSoldout=<%=product.productSoldout%>">[품절]</a>
+						<a href="/mall-admin/product/modifyProductSoldoutAction.jsp?productId=<%=product.getProductId() %>&productSoldout=<%=product.getProductSoldout()%>">[품절]</a>
 				<%
 					}else{
 				%>
-						<a href="/mall-admin/product/modifyProductSoldoutAction.jsp?productId=<%=product.productId%>&productSoldout=<%=product.productSoldout%>">[품절아님]</a>
+						<a href="/mall-admin/product/modifyProductSoldoutAction.jsp?productId=<%=product.getProductId()%>&productSoldout=<%=product.getProductSoldout()%>">[품절아님]</a>
 				<%
 					}
 				%>
 			</td>
 		</tr>
 		<tr>
-			<td class="table-info"><a class="text-dark" href="/mall-admin/product/updateProduct.jsp?productId=<%=product.productId%>&categoryId=<%=product.categoryId%>
-									&productName=<%=product.productName%>&productPrice=<%=product.productPrice%>&productSoldout=<%=product.productSoldout%>">[수정]</a></td>
-			<td class="table-danger"><a class="text-dark" href="/mall-admin/product/deleteProductAction.jsp?productId=<%=product.productId%>">[삭제]</a></td>
+			<td class="table-info"><a class="text-dark" href="/mall-admin/product/updateProduct.jsp?productId=<%=product.getProductId() %>&categoryId=<%=product.getCategoryId() %>
+									&productName=<%=product.getProductName() %>&productPrice=<%=product.getProductPrice()%>&productSoldout=<%=product.getProductSoldout() %>">[수정]</a></td>
+			<td class="table-danger"><a class="text-dark" href="/mall-admin/product/deleteProductAction.jsp?productId=<%=product.getProductId() %>">[삭제]</a></td>
 		</tr>
 	</table>
 </div>

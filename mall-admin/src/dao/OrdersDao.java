@@ -95,15 +95,15 @@ public class OrdersDao {
 			ordersAndProduct.orders = new Orders();
 			ordersAndProduct.product = new Product();
 			
-			ordersAndProduct.orders.ordersId = rs.getInt("orders_id");
-			ordersAndProduct.orders.productId = rs.getInt("product_id");
-			ordersAndProduct.orders.ordersAmount = rs.getInt("orders_amount");
-			ordersAndProduct.orders.ordersPrice = rs.getInt("orders_price");
-			ordersAndProduct.orders.memberEmail = rs.getString("member_email");
-			ordersAndProduct.orders.ordersAddr = rs.getString("orders_addr");
-			ordersAndProduct.orders.ordersState = rs.getString("orders_state");
-			ordersAndProduct.orders.ordersDate = rs.getString("orders_date");
-			ordersAndProduct.product.productName = rs.getString("product_name");
+			ordersAndProduct.orders.setOrdersId(rs.getInt("orders_id"));
+			ordersAndProduct.orders.setProductId(rs.getInt("product_id"));
+			ordersAndProduct.orders.setOrdersAmount(rs.getInt("orders_amount"));
+			ordersAndProduct.orders.setOrdersPrice(rs.getInt("orders_price"));
+			ordersAndProduct.orders.setMemberEmail(rs.getString("member_email"));
+			ordersAndProduct.orders.setOrdersAddr(rs.getString("orders_addr"));
+			ordersAndProduct.orders.setOrdersState(rs.getString("orders_state"));
+			ordersAndProduct.orders.setOrdersDate(rs.getString("orders_date"));
+			ordersAndProduct.product.setProductName(rs.getString("product_name"));
 			list.add(ordersAndProduct);
 		}
 		conn.close();
@@ -132,16 +132,17 @@ public class OrdersDao {
 			OrdersAndProduct ordersAndProduct = new OrdersAndProduct();
 			ordersAndProduct.orders = new Orders();
 			ordersAndProduct.product = new Product();
+
+			ordersAndProduct.orders.setOrdersId(rs.getInt("orders_id"));
+			ordersAndProduct.orders.setProductId(rs.getInt("product_id"));
+			ordersAndProduct.orders.setOrdersAmount(rs.getInt("orders_amount"));
+			ordersAndProduct.orders.setOrdersPrice(rs.getInt("orders_price"));
+			ordersAndProduct.orders.setMemberEmail(rs.getString("member_email"));
+			ordersAndProduct.orders.setOrdersAddr(rs.getString("orders_addr"));
+			ordersAndProduct.orders.setOrdersState(rs.getString("orders_state"));
+			ordersAndProduct.orders.setOrdersDate(rs.getString("orders_date"));
+			ordersAndProduct.product.setProductName(rs.getString("product_name"));
 			
-			ordersAndProduct.orders.ordersId = rs.getInt("orders_id");
-			ordersAndProduct.orders.productId = rs.getInt("product_id");
-			ordersAndProduct.orders.ordersAmount = rs.getInt("orders_amount");
-			ordersAndProduct.orders.ordersPrice = rs.getInt("orders_price");
-			ordersAndProduct.orders.memberEmail = rs.getString("member_email");
-			ordersAndProduct.orders.ordersAddr = rs.getString("orders_addr");
-			ordersAndProduct.orders.ordersState = rs.getString("orders_state");
-			ordersAndProduct.orders.ordersDate = rs.getString("orders_date");
-			ordersAndProduct.product.productName = rs.getString("product_name");
 			list.add(ordersAndProduct);
 		}
 		return list;
@@ -157,8 +158,8 @@ public class OrdersDao {
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(dbaddr,dbid,dbpw);
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, ordersAndProduct.orders.ordersState);
-		stmt.setInt(2, ordersAndProduct.orders.ordersId);
+		stmt.setString(1, ordersAndProduct.orders.getOrdersState());
+		stmt.setInt(2, ordersAndProduct.orders.getOrdersId());
 
 		stmt.executeUpdate();
 		
@@ -190,15 +191,15 @@ public class OrdersDao {
 				ordersAndProduct.orders = new Orders();
 				ordersAndProduct.product = new Product();
 				
-				ordersAndProduct.orders.ordersId = rs.getInt("orders_id");
-				ordersAndProduct.orders.productId = rs.getInt("product_id");
-				ordersAndProduct.orders.ordersAmount = rs.getInt("orders_amount");
-				ordersAndProduct.orders.ordersPrice = rs.getInt("orders_price");
-				ordersAndProduct.orders.memberEmail = rs.getString("member_email");
-				ordersAndProduct.orders.ordersAddr = rs.getString("orders_addr");
-				ordersAndProduct.orders.ordersState = rs.getString("orders_state");
-				ordersAndProduct.orders.ordersDate = rs.getString("orders_date");
-				ordersAndProduct.product.productName = rs.getString("product_name");
+				ordersAndProduct.orders.setOrdersId(rs.getInt("orders_id"));
+				ordersAndProduct.orders.setProductId(rs.getInt("product_id"));
+				ordersAndProduct.orders.setOrdersAmount(rs.getInt("orders_amount"));
+				ordersAndProduct.orders.setOrdersPrice(rs.getInt("orders_price"));
+				ordersAndProduct.orders.setMemberEmail(rs.getString("member_email"));
+				ordersAndProduct.orders.setOrdersAddr(rs.getString("orders_addr"));
+				ordersAndProduct.orders.setOrdersState(rs.getString("orders_state"));
+				ordersAndProduct.orders.setOrdersDate(rs.getString("orders_date"));
+				ordersAndProduct.product.setProductName(rs.getString("product_name"));
 			}
 			conn.close();
 			

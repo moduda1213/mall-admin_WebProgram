@@ -84,16 +84,16 @@
 				for(OrdersAndProduct o : selectList){
 			%>
 			<tr>
-				<td><%=o.orders.ordersId %></td>
-				<td><%=o.orders.productId %></td>
-				<td><%=o.product.productName %></td> 
-				<td><%=o.orders.ordersAmount %></td>
-				<td><%=o.orders.ordersPrice %></td>
-				<td><%=o.orders.memberEmail %></td>
-				<td><%=o.orders.ordersAddr %></td>
-				<td><%=o.orders.ordersState %></td>
-				<td><%=o.orders.ordersDate %></td>
-				<td><a href="/mall-admin/orders/modifyOrdersState.jsp?ordersId=<%=o.orders.ordersId%>">orders_state 수정</a></td>
+				<td><%=o.orders.getOrdersId() %></td>
+				<td><%=o.orders.getProductId() %></td>
+				<td><%=o.product.getProductName() %></td> 
+				<td><%=o.orders.getOrdersAmount() %></td>
+				<td><%=o.orders.getOrdersPrice() %></td>
+				<td><%=o.orders.getMemberEmail() %></td>
+				<td><%=o.orders.getOrdersAddr() %></td>
+				<td><%=o.orders.getOrdersState() %></td>
+				<td><%=o.orders.getOrdersDate() %></td>
+				<td><a href="/mall-admin/orders/modifyOrdersState.jsp?ordersId=<%=o.orders.getOrdersId() %>">orders_state 수정</a></td>
 			</tr>
 			<%
 				}
@@ -103,20 +103,24 @@
 	<div>
 		<ul class="pagination"> <!-- 페이징 -->
 			<%
-				if(currentPage >1){
+				if(currentPage == 1){
+			%>
+					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=1">처음으로</a></li>
+					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></li>
+			<%
+				}else if(currentPage == p.lastPage){
 			%>
 					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=1">처음으로</a></li>
 					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></li>
 			<%
-				}
+				}else{
 			%>
-			<%
-				if(currentPage < p.lastPage){
-			%>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=1">처음으로</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=1">처음으로</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
 					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
 					<li class="page-item"><a class="page-link" href="/mall-admin/orders/ordersList.jsp?currentPage=<%=p.lastPage%>">마지막으로</a></li>
 			<%

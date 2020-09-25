@@ -20,12 +20,12 @@ public class ProductDao {
 		
 		while(rs.next()) {
 			Product p = new Product();
-			p.productId = rs.getInt("product_id");
-			p.categoryId = rs.getInt("category_id");
-			p.productName = rs.getString("product_name");
-			p.productPrice = rs.getInt("product_price");
-			p.productContent = rs.getString("product_content");
-			p.productSoldout = rs.getString("product_soldout");
+			p.setProductId(rs.getInt("product_id"));
+			p.setCategoryId(rs.getInt("category_id"));
+			p.setProductName(rs.getString("product_name"));
+			p.setProductPrice(rs.getInt("product_price"));
+			p.setProductContent(rs.getString("product_content"));
+			p.setProductSoldout(rs.getString("product_soldout"));
 			list.add(p);
 		}
 		conn.close();
@@ -49,12 +49,12 @@ public class ProductDao {
 		
 		while(rs.next()) {
 			Product p = new Product();
-			p.productId = rs.getInt("product_id");
-			p.categoryId = rs.getInt("category_id");
-			p.productName = rs.getString("product_name");
-			p.productPrice = rs.getInt("product_price");
-			p.productContent = rs.getString("product_content");
-			p.productSoldout = rs.getString("product_soldout");
+			p.setProductId(rs.getInt("product_id"));
+			p.setCategoryId(rs.getInt("category_id"));
+			p.setProductName(rs.getString("product_name"));
+			p.setProductPrice(rs.getInt("product_price"));
+			p.setProductContent(rs.getString("product_content"));
+			p.setProductSoldout(rs.getString("product_soldout"));
 			list.add(p);
 		}
 		conn.close();
@@ -79,12 +79,12 @@ public class ProductDao {
 		
 		while(rs.next()) {
 			Product p = new Product();
-			p.productId = rs.getInt("product_id");
-			p.categoryId = rs.getInt("category_id");
-			p.productName = rs.getString("product_name");
-			p.productPrice = rs.getInt("product_price");
-			p.productContent = rs.getString("product_content");
-			p.productSoldout = rs.getString("product_soldout");
+			p.setProductId(rs.getInt("product_id"));
+			p.setCategoryId(rs.getInt("category_id"));
+			p.setProductName(rs.getString("product_name"));
+			p.setProductPrice(rs.getInt("product_price"));
+			p.setProductContent(rs.getString("product_content"));
+			p.setProductSoldout(rs.getString("product_soldout"));
 			list.add(p);
 		}
 		conn.close();
@@ -100,11 +100,11 @@ public class ProductDao {
 		Connection conn = DriverManager.getConnection(dbaddr,dbid,dbpw);
 		String sql = "insert into product(category_id,product_name,product_price, product_content,product_soldout) values(?,?,?,?,?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, product.categoryId);
-		stmt.setString(2, product.productName);
-		stmt.setInt(3, product.productPrice);
-		stmt.setString(4, product.productContent);
-		stmt.setString(5, product.productSoldout);
+		stmt.setInt(1, product.getCategoryId());
+		stmt.setString(2, product.getProductName());
+		stmt.setInt(3, product.getProductPrice());
+		stmt.setString(4, product.getProductContent());
+		stmt.setString(5, product.getProductSoldout());
 		stmt.executeUpdate();
 		
 		conn.close();
@@ -120,7 +120,7 @@ public class ProductDao {
 		Connection conn = DriverManager.getConnection(dbaddr,dbid,dbpw);
 		String sql = "delete from product where product_id =?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, product.productId);
+		stmt.setInt(1, product.getProductId());
 		stmt.executeUpdate();
 		
 		conn.close();
@@ -136,12 +136,12 @@ public class ProductDao {
 		Connection conn = DriverManager.getConnection(dbaddr,dbid,dbpw);
 		String sql = "update product set category_id=?, product_name=?, product_price=?,product_content=?,product_soldout=? where product_id =?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, product.categoryId);
-		stmt.setString(2,product.productName);
-		stmt.setInt(3,product.productPrice);
-		stmt.setString(4,product.productContent);
-		stmt.setString(5,product.productSoldout);
-		stmt.setInt(6, product.productId);
+		stmt.setInt(1, product.getCategoryId());
+		stmt.setString(2, product.getProductName());
+		stmt.setInt(3, product.getProductPrice());
+		stmt.setString(4, product.getProductContent());
+		stmt.setString(5, product.getProductSoldout());
+		stmt.setInt(6, product.getProductId());
 		stmt.executeUpdate();
 		
 		conn.close();
@@ -187,13 +187,13 @@ public class ProductDao {
 		
 		if(rs.next()) {
 			product = new Product();
-			product.productId = rs.getInt("product_id");
-			product.categoryId = rs.getInt("category_id");
-			product.productName = rs.getString("product_name");
-			product.productPrice = rs.getInt("product_price");
-			product.productContent = rs.getString("product_content");
-			product.productSoldout = rs.getString("product_soldout");
-			product.productPic = rs.getNString("product_pic");
+			product.setProductId(rs.getInt("product_id"));
+			product.setCategoryId(rs.getInt("category_id"));
+			product.setProductName(rs.getString("product_name"));
+			product.setProductPrice(rs.getInt("product_price"));
+			product.setProductContent(rs.getString("product_content"));
+			product.setProductSoldout(rs.getString("product_soldout"));
+			product.setProductPic(rs.getString("product_pic"));
 		}
 		
 		return product;

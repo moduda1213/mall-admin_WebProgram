@@ -9,8 +9,8 @@
 	String adminPw = request.getParameter("adminPw");
 	
 	Admin paraAdmin = new Admin(); // 로그인하기 위해 입력한 데이터 저장하는 공간
-	paraAdmin.adminId = adminId;
-	paraAdmin.adminPw = adminPw;
+	paraAdmin.setAdminId(adminId);
+	paraAdmin.setAdminPw(adminPw);
 	
 	AdminDao adminDao = new AdminDao();
 	Admin loginAdmin = adminDao.login(paraAdmin); // 옳바른 id,pw값인지 판단 후 저장하는 공간
@@ -21,7 +21,7 @@
 	}else{
 		System.out.println("로그인 성공"); 
 		// 로그인 정보를 session에 저장( page < request < session < application )
-		session.setAttribute("loginAdminId", loginAdmin.adminId); // 세션의 변수 만드는 방법
+		session.setAttribute("loginAdminId", loginAdmin.getAdminId()); // 세션의 변수 만드는 방법
 		response.sendRedirect("/mall-admin/index.jsp");
 	}
 %>

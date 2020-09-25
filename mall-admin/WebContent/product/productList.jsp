@@ -62,8 +62,8 @@
 			for(Category c : categoryList){
 		%>
 			<li class="list-group-item btn btn-outline-warning">
-				<a href="/mall-admin/product/productList.jsp?categoryId=<%=c.CategoryId%>" class="text-dark">
-				[<%=c.CategoryName %>]</a>
+				<a href="/mall-admin/product/productList.jsp?categoryId=<%=c.getCategoryId() %>" class="text-dark">
+				[<%=c.getCategoryName() %>]</a>
 			</li>
 		<%
 			}
@@ -87,17 +87,17 @@
 		<tbody>
 			<%
 				for(Product p : productList){
-					if(p.productSoldout.equals("Y")){
+					if(p.getProductSoldout().equals("Y")){
 			%>
 					<tr>
 						<td>
-							<a href ="/mall-admin/product/productOne.jsp?productId=<%=p.productId%>" class="text-dark">
-								<%=p.productId %>
+							<a href ="/mall-admin/product/productOne.jsp?productId=<%=p.getProductId()%>" class="text-dark">
+								<%=p.getProductId() %>
 							</a>
 						</td>
-						<td><%=p.categoryId %></td>
-						<td><%=p.productName %></td>
-						<td><%=p.productPrice %></td>
+						<td><%=p.getCategoryId() %></td>
+						<td><%=p.getProductName() %></td>
+						<td><%=p.getProductPrice() %></td>
 						<td>품절</td>
 					<tr>
 			<%
@@ -105,14 +105,14 @@
 			%>
 					<tr>
 						<td>
-							<a href ="/mall-admin/product/productOne.jsp?productId=<%=p.productId%>" class="text-dark">
-								<%=p.productId %>
+							<a href ="/mall-admin/product/productOne.jsp?productId=<%=p.getProductId() %>" class="text-dark">
+								<%=p.getProductId() %>
 							</a>
 						</td>
-						<td><%=p.categoryId %></td>
-						<td><%=p.productName %></td>
-						<td><%=p.productPrice %></td>
-						<td><%=p.productSoldout %></td>
+						<td><%=p.getCategoryId() %></td>
+						<td><%=p.getProductName() %></td>
+						<td><%=p.getProductPrice() %></td>
+						<td><%=p.getProductSoldout() %></td>
 					<tr>
 			<%
 					}
@@ -123,23 +123,29 @@
 	<div>
 		<ul class="pagination"> <!-- 페이징 -->
 			<%
-				if(currentPage > 1){
-			%>
-					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=1">처음으로</a></li>
-					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
-					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=paging.lastPage%>">마지막으로</a></li>
-			<%
-				}else if(currentPage < paging.lastPage){
+				if(currentPage == 1){
 			%>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=1">처음으로</a></li>
 					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
 					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
 					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=paging.lastPage%>">마지막으로</a></li>
 			<%
+				}else if(currentPage < paging.lastPage){
+			%>
+					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=1">처음으로</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=paging.lastPage%>">마지막으로</a></li>
+			<%
+				}else{
+			%>
+					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=1">처음으로</a></li>
+					<li class="page-item"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage-1%>">이전</a></li>
+					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=currentPage+1%>">다음</a></li>
+					<li class="page-item disabled"><a class="page-link" href="/mall-admin/product/productList.jsp?currentPage=<%=paging.lastPage%>">마지막으로</a></li>
+			<%
 				}
 			%>
-			
 		</ul>
 	</div>
 	

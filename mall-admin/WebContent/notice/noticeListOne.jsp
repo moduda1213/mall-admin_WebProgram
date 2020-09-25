@@ -40,29 +40,29 @@
 		<div>
 			<jsp:include page = "/inc/menu.jsp"></jsp:include>
 		</div>
-		<form method="post" action="<%=request.getContextPath()%>/notice/noticeListInsertAction.jsp">
+		<form method="post" action="<%=request.getContextPath()%>/notice/noticeListUpdateAction.jsp">
 			<table class="table table-bordered table-hover table-responsive-md">
 				<tr>
 					<th class="table-success">noticeId</th>
 					<td>
-						<input type="text" name = "noticeId" readonly="readonly" value="<%=notice.noticeId %>">
+						<input type="text" name = "noticeId" readonly="readonly" value="<%=notice.getNoticeId() %>">
 					</td>
 				</tr>
 				<tr>
 					<th class="table-success">noticeTitle</th>
 					<td>
-						<input type="text" name = "noticeTitle" value="<%=notice.noticeTitle %>">
+						<input type="text" name = "noticeTitle" value="<%=notice.getNoticeTitle() %>">
 				</tr>
 				<tr>
 					<th class="table-success">noticeContent</th>
 					<td>
-						<textarea name ="noticeContent" rows="5" cols="50"><%=notice.noticeContent %></textarea>
+						<textarea name ="noticeContent" rows="5" cols="50"><%=notice.getNoticeContent() %></textarea>
 					</td>
 				</tr>
 				<tr>
 					<th class="table-success">noticeDate</th>
 					<td>
-						<input type="text" name = "noticeDate" readonly="readonly" value="<%=notice.noticeDate %>">
+						<input type="text" name = "noticeDate" readonly="readonly" value="<%=notice.getNoticeDate() %>">
 					</td>
 				</tr>
 			</table>

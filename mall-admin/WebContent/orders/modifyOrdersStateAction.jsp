@@ -16,7 +16,7 @@
  	
  	
  	oap = ordersDao.selectOrdersOne(ordersId);
- 	oap.orders.ordersState = ordersState;
+ 	oap.orders.setOrdersState(ordersState);
  	
  	ordersDao.updateOrdersState(oap);
  	System.out.println(ordersId + ordersState);

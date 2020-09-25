@@ -16,11 +16,11 @@
 	String productSoldout = request.getParameter("productSoldout");
 
 	Product product = new Product();
-	product.categoryId = categoryId;
-	product.productName = productName;
-	product.productPrice = productPrice;
-	product.productContent = productContent;
-	product.productSoldout = productSoldout;
+	product.setCategoryId(categoryId);
+	product.setProductName(productName);
+	product.setProductPrice(productPrice);
+	product.setProductContent(productContent);
+	product.setProductSoldout(productSoldout);
 	
 	ProductDao productDao = new ProductDao();
 	productDao.insertProduct(product);

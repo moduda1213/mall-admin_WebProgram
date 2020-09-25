@@ -38,7 +38,7 @@
 						<%
 							for(Category c : categoryList){
 						%>
-								<option value="<%=c.CategoryId %>"><%=c.CategoryName %></option>
+								<option value="<%=c.getCategoryId() %>"><%=c.getCategoryName() %></option>
 						<%
 							}
 						%>

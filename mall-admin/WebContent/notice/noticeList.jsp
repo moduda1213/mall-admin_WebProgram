@@ -44,12 +44,12 @@
 					%>
 							<tr>
 								<td>
-									<a href="<%=request.getContextPath()%>/notice/noticeListOne.jsp?noticeId=<%=n.noticeId%>"><%=n.noticeId %></a>
+									<a href="<%=request.getContextPath()%>/notice/noticeListOne.jsp?noticeId=<%=n.getNoticeId() %>"><%=n.getNoticeId() %></a>
 								</td>
-								<td><%=n.noticeTitle %></td>
-								<td><%=n.noticeDate %></td>
+								<td><%=n.getNoticeTitle() %></td>
+								<td><%=n.getNoticeDate() %></td>
 								<td>
-									<a href="<%=request.getContextPath()%>/notice/noticeListDeleteAction.jsp">삭제</a>
+									<a href="<%=request.getContextPath() %>/notice/noticeListDeleteAction.jsp?noticeId=<%=n.getNoticeId() %>">삭제</a>
 								</td>
 							</tr>
 					<%
@@ -57,7 +57,7 @@
 					%>
 				</tbody>
 			</table>
-		<a href="<%=request.getContextPath()%>/notice/noticeListInsert.jsp">공지 추가</a>
+		<a href="<%=request.getContextPath()%>/notice/noticeInsertForm.jsp">공지 추가</a>
 	</div>
 </body>
 </html>

@@ -33,7 +33,7 @@
 		<jsp:include page ="/inc/menu.jsp"></jsp:include>
 	</div>
 	<h1>주문 상태 변경</h1>
-	<form method = "post" action = "/mall-admin/orders/modifyOrdersStateAction.jsp?ordersId=<%=oap.orders.ordersId%>">
+	<form method = "post" action = "/mall-admin/orders/modifyOrdersStateAction.jsp?ordersId=<%=oap.orders.getOrdersId() %>">
 		<table class = "table">
 			<thead>
 				<tr>
@@ -51,18 +51,18 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%=oap.orders.ordersId %></td>
-					<td><%=oap.orders.productId %></td>
-					<td><%=oap.product.productName %></td> 
-					<td><%=oap.orders.ordersAmount %></td>
-					<td><%=oap.orders.ordersPrice %></td>
-					<td><%=oap.orders.memberEmail %></td>
-					<td><%=oap.orders.ordersAddr %></td>
+					<td><%=oap.orders.getOrdersId() %></td>
+					<td><%=oap.orders.getProductId() %></td>
+					<td><%=oap.product.getProductName() %></td> 
+					<td><%=oap.orders.getOrdersAmount() %></td>
+					<td><%=oap.orders.getOrdersPrice() %></td>
+					<td><%=oap.orders.getMemberEmail() %></td>
+					<td><%=oap.orders.getOrdersAddr() %></td>
 					<td>
 						<select name = "ordersState">
 							<%
 								for(String s : stateList){
-									if(s.equals(oap.orders.ordersState)){
+									if(s.equals(oap.orders.getOrdersState())){
 							%>
 									<option selected="selected"><%=s %></option>
 							<%
@@ -75,7 +75,7 @@
 							%>
 						</select>
 					</td>
-					<td><%=oap.orders.ordersDate %></td>
+					<td><%=oap.orders.getOrdersDate() %></td>
 					<td><button class="nav-link btn btn-outline-info" type = "submit">수정</button>
 				</tr>
 			</tbody>

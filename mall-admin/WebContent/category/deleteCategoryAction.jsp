@@ -9,7 +9,7 @@
 	System.out.println(categoryId);
 	
 	Category category = new Category();
-	category.CategoryId = categoryId;
+	category.setCategoryId(categoryId);
 	
 	CategoryDao categoryDao = new CategoryDao();
 	categoryDao.deleteCategory(category);

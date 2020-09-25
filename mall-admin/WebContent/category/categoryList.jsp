@@ -57,10 +57,10 @@
 				for(Category c : list){
 			%>
 					<tr>
-						<td style="height:10px; width:10px;"><%=c.CategoryId %></td>
-						<td style="height:10px; width:10px;"><%=c.CategoryName %></td>
-						<td style="height:10px; width:5px;" class="table-info"><a href="/mall-admin/category/updateCategory.jsp?categoryId=<%=c.CategoryId%>&categoryName=<%=c.CategoryName%>">수정</a></td>
-						<td style="height:10px; width:5px;" class="table-danger"><a href="/mall-admin/category/deleteCategoryAction.jsp?categoryId=<%=c.CategoryId%>">삭제</a></td>
+						<td style="height:10px; width:10px;"><%=c.getCategoryId() %></td>
+						<td style="height:10px; width:10px;"><%=c.getCategoryName() %></td>
+						<td style="height:10px; width:5px;" class="table-info"><a href="/mall-admin/category/updateCategory.jsp?categoryId=<%=c.getCategoryId() %>&categoryName=<%=c.getCategoryName() %>">수정</a></td>
+						<td style="height:10px; width:5px;" class="table-danger"><a href="/mall-admin/category/deleteCategoryAction.jsp?categoryId=<%=c.getCategoryId() %>">삭제</a></td>
 					</tr>
 			<%
 				}

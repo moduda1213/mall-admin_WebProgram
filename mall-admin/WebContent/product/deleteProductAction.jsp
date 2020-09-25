@@ -5,14 +5,13 @@
 	if(session.getAttribute("loginAdminId")==null){
 		response.sendRedirect("/mall-admin/login/login.jsp");
 	}
-%>
-<%
+
 	request.setCharacterEncoding("utf-8");
 
 	int productId = Integer.parseInt(request.getParameter("productId"));
 	
 	Product product = new Product();
-	product.productId=productId;
+	product.setProductId(productId);
 	
 	ProductDao productDao = new ProductDao();
 	productDao.deleteProduct(product);

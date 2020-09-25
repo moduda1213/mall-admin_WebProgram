@@ -58,13 +58,13 @@
 						<%
 							for(Category c : categoryList){
 								 // 수정할 카테고리 아이디와 같다면 없애거나 선택되어야 한다
-								 if(c.CategoryId==categoryId){
+								 if(c.getCategoryId()==categoryId){
 						%>
-									<option value=<%=c.CategoryId %> selected="selected"><%=c.CategoryName %></option>
+									<option value=<%=c.getCategoryId() %> selected="selected"><%=c.getCategoryName() %></option>
 						<%
 								}else{
 						%>
-								<option value=<%=c.CategoryId %>><%=c.CategoryName %></option>
+								<option value=<%=c.getCategoryId() %>><%=c.getCategoryName() %></option>
 						<%
 								}
 							}

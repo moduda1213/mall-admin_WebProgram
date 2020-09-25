@@ -16,9 +16,9 @@ public class NoticeDao {
 		
 		while(rs.next()) {
 			Notice n = new Notice();
-			n.noticeId = rs.getInt("notice_id");
-			n.noticeTitle = rs.getString("notice_title");
-			n.noticeDate = rs.getString("notice_date");
+			n.setNoticeId(rs.getInt("notice_id"));
+			n.setNoticeTitle(rs.getString("notice_title"));
+			n.setNoticeDate(rs.getString("notice_date"));
 			list.add(n);
 		}
 		
@@ -37,10 +37,10 @@ public class NoticeDao {
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			n.noticeId = rs.getInt("notice_id");
-			n.noticeTitle = rs.getString("notice_title");
-			n.noticeContent = rs.getString("notice_content");
-			n.noticeDate = rs.getString("notice_date");
+			n.setNoticeId(rs.getInt("notice_id"));
+			n.setNoticeTitle(rs.getString("notice_title"));
+			n.setNoticeContent(rs.getString("notice_content"));
+			n.setNoticeDate(rs.getString("notice_date"));
 		}
 		
 		conn.close();
@@ -57,13 +57,39 @@ public class NoticeDao {
 		String sql= "update notice set notice_title=?, notice_content=? where notice_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
-		stmt.setString(1,notice.noticeTitle);
-		stmt.setString(2,notice.noticeContent);
-		stmt.setInt(3, notice.noticeId);
+		stmt.setString(1,notice.getNoticeTitle());
+		stmt.setString(2,notice.getNoticeContent());
+		stmt.setInt(3, notice.getNoticeId());
 		
 		stmt.executeUpdate();
 		conn.close();
 		
+	}
+	
+	public void deleteNotice(int noticeId) throws Exception{
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "delete from notice where notice_id =?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		
+		stmt.setInt(1, noticeId);
+		
+		stmt.executeUpdate();
+		
+		conn.close();
+	}
+	
+	public void insertNotice(Notice notice) throws Exception{
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "insert into notice(notice_title, notice_content, notice_date) values(?,?,now())"; //dateµµ Ãß°¡
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1,notice.getNoticeTitle());
+		stmt.setString(2, notice.getNoticeContent());
+		
+		stmt.executeUpdate();
+		
+		conn.close();
 	}
 }
 

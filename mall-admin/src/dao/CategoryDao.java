@@ -19,8 +19,8 @@ public class CategoryDao {
 		
 		while(rs.next()) {
 			Category category = new Category();
-			category.CategoryId= rs.getInt("category_id");
-			category.CategoryName= rs.getString("category_name");
+			category.setCategoryId(rs.getInt("category_id"));
+			category.setCategoryName(rs.getString("category_name"));
 			list.add(category);
 		}
 		conn.close();
@@ -40,8 +40,8 @@ public class CategoryDao {
 		
 		while(rs.next()) {
 			Category category = new Category();
-			category.CategoryId= rs.getInt("category_id");
-			category.CategoryName= rs.getString("category_name");
+			category.setCategoryId(rs.getInt("category_id"));
+			category.setCategoryName(rs.getString("category_name"));
 			list.add(category);
 		}
 		conn.close();
@@ -55,7 +55,7 @@ public class CategoryDao {
 		
 		String sql = "insert into category(category_name) values(?)";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, category.CategoryName);
+		stmt.setString(1, category.getCategoryName());
 		stmt.executeUpdate();
 		conn.close();
 	}
@@ -70,7 +70,7 @@ public class CategoryDao {
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(dbaddr,dbid,dbpw); 
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1,category.CategoryId);
+		stmt.setInt(1,category.getCategoryId());
 		stmt.executeUpdate();
 		conn.close();
 	}
@@ -81,8 +81,8 @@ public class CategoryDao {
 		Connection conn = dbUtil.getConnection();
 		String sql = "update category set category_name=? where category_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, category.CategoryName);
-		stmt.setInt(2, category.CategoryId);
+		stmt.setString(1, category.getCategoryName());
+		stmt.setInt(2, category.getCategoryId());
 		stmt.executeUpdate();
 		conn.close();
 	}

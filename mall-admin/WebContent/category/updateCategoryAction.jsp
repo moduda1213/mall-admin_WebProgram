@@ -12,8 +12,8 @@
 	String categoryName = request.getParameter("categoryName"); // 수정할 이름 불러오기
 	
 	Category category = new Category();
-	category.CategoryId = categoryId;
-	category.CategoryName = categoryName;
+	category.setCategoryId(categoryId);
+	category.setCategoryName(categoryName);
 	
 	CategoryDao categoryDao = new CategoryDao();
 	categoryDao.updateCategory(category);

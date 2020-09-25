@@ -15,19 +15,21 @@
 	
 	request.setCharacterEncoding("utf-8");
 	
+	int noticeId = Integer.parseInt(request.getParameter("noticeId"));
 	String noticeTitle = request.getParameter("noticeTitle");
 	String noticeContent = request.getParameter("noticeContent");
 	
-	System.out.println(noticeTitle + " " + noticeContent);
+	System.out.println(noticeId + " " + noticeTitle + " " + noticeContent);
 	
 	Notice notice = new Notice();
+	notice.setNoticeId(noticeId);
 	notice.setNoticeTitle(noticeTitle);
 	notice.setNoticeContent(noticeContent);
 	
-	System.out.println(notice.getNoticeTitle() + " " + notice.getNoticeContent());
+	System.out.println(notice.getNoticeId() + " " + notice.getNoticeTitle() + " " + notice.getNoticeContent());
 	
 	NoticeDao noticeDao = new NoticeDao();
-	noticeDao.insertNotice(notice);
+	noticeDao.updateNotice(notice);
 	
 	response.sendRedirect(request.getContextPath()+"/notice/noticeList.jsp");
 %>
