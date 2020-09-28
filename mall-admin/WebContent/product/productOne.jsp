@@ -33,7 +33,10 @@
 	<table class="table table-bordered table-hover table-responsive-sm">
 		<tr>
 			<td>product_pic</td>
-			<td><img src="/mall-admin/image/<%=product.getProductPic() %>"></td>
+			<td>
+				<img src="/mall-admin/image/<%=product.getProductPic() %>">
+				<a href="<%=request.getContextPath()%>/product/modifyProductPic.jsp?productId=<%=product.getProductId() %>">이미지수정</a>
+			</td>
 		</tr>
 		<tr>
 			<td>product_id</td>

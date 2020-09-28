@@ -2,6 +2,7 @@ package dao;
 import vo.*;
 import java.sql.*;
 import java.util.*;
+import commons.DBUtil;
 
 public class ProductDao {
 	
@@ -234,7 +235,21 @@ public class ProductDao {
 		return page;
 	}
 	
-	
+	public void updateProductPic(Product product) throws Exception{
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql ="update product set product_pic=? where product_id=?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		
+		stmt.setString(1, product.getProductPic());
+		stmt.setInt(2, product.getProductId());
+		System.out.println(product.getProductPic()+"<--product.getProductPic()");
+		System.out.println(product.getProductId()+"<--product.getProductId()");
+		
+		stmt.executeUpdate();
+		
+		conn.close();
+	}
 	
 	
 	
