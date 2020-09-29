@@ -22,10 +22,10 @@
 	<div class="form-group">
 		<form method="post" action="/mall-admin/login/loginAction.jsp"><!-- 절대 주소 -->
 			<label for="usr">관리자ID:</label>
-			<input type ="text" class="form-control" id="usr" name = "adminId" style="width:200px;">
+			<input type ="text" class="form-control" id="usr" name = "adminId" style="width:200px;" value="admin@naver.com">
 				
 			<label for="pwd">관리자PW:</label>
-			<input type ="password" class="form-control" id="pwd" name = "adminPw" style="width:200px;">
+			<input type ="password" class="form-control" id="pwd" name = "adminPw" style="width:200px;" value="1234">
 			<div>&nbsp;</div>
 			<button type = "submit" class="btn btn-primary">로그인</button>
 		</form>
