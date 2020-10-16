@@ -2,4 +2,5 @@
 <%
 	session.invalidate(); // 지금 존재하는 세션 삭제 -> 새 세션을 만드는 코드
 	response.sendRedirect("/mall-admin/login/login.jsp");
-%>
+	   
+%> 
